@@ -30,6 +30,10 @@
     padding: 32px;
 }
 
+.guild-profile h1 {
+    word-break: break-word;
+}
+
 .guild-profile img {
     border-radius: 50%;
 }

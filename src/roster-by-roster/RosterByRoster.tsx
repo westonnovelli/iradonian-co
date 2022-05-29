@@ -13,7 +13,7 @@ interface Props {
 const GuildSummary: React.FC<Props['guild1']> = (guild) => {
     return (
         <div className="guild-profile">
-            <h1>{guild.name}</h1>
+            <h1 title={guild.name}>{guild.name}</h1>
             {guild.banner_logo_id && <img src={`https://swgoh.gg/static/img/assets/tex.${guild.banner_logo_id}.png`} />}
             <div><label>Total GP</label> {guild.galactic_power?.toLocaleString('en-us')}</div>
             <div><label>Average GAC Skill Rating</label> {guild.avg_skill_rating}</div>
