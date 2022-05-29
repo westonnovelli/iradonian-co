@@ -1,24 +1,19 @@
+import queryString from 'query-string';
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
+import useGuildProfile from './data/guild-profile/use-guild-profile';
+import RosterByRoster from './RosterByRoster';
 
-function App() {
+const App: React.FC = () => {
+  console.log(window.location.search);
+  const { guild: guildQuery } = queryString.parse(window.location.search);
+  const guild2Id = (Array.isArray(guildQuery) ? guildQuery.filter(g => g !== null)[0] : guildQuery) ?? '';
+  const guild1 = useGuildProfile();
+  const guild2 = useGuildProfile(guild2Id);
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <RosterByRoster guild1={guild1} guild2={guild2}/>
     </div>
   );
 }

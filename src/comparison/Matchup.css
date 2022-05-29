@@ -1,0 +1,37 @@
+.matchup {
+    height: 16px;
+    width: 100%;
+    display: grid;
+    padding: 2px;
+    position: relative;
+}
+
+.matchup > hr {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    border: 1px solid #868383;
+    background-color: #868383;
+    z-index: 0;
+}
+
+.matchup > div {
+    width: 50%;
+    height: calc(100% - 2px);
+    background: #dfb447;
+    position: relative;
+    z-index: 1;
+}
+
+.matchup .leftWins {
+    place-self: stretch start;
+}
+
+.matchup .rightWins {
+    place-self: stretch end;
+}
+
+.matchup .tie {
+    place-self: stretch center;
+}

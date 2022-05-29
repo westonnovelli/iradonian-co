@@ -1,0 +1,70 @@
+.roster-by-roster {
+}
+
+.roster-by-roster .summary {
+    margin-bottom: 16px;
+}
+
+.roster-by-roster .matchup-dimension {
+    margin-bottom: 16px;
+}
+
+.summary {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto;
+    width: 100%;
+}
+
+.summary .guild-profile {
+    place-self: center;
+}
+
+.guild-profile {
+    text-align: center;
+}
+
+.guild-profile img {
+    border-radius: 50%;
+}
+
+.guild-profile label {
+    color: #a1a5a5;
+}
+
+.matchup-dimension {
+    display: flex;
+    place-content: center;
+}
+
+.matchup-dimension select {
+    margin-left: 8px;
+}
+
+.player-matchup {
+    width: 100%;
+}
+
+.player-matchup ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.player-matchup li {
+    display: grid;
+    grid-template-columns: 1fr 80px 1fr;
+    grid-template-rows: auto;
+    gap: 16px;
+    margin: 0 24px;
+    margin-bottom: 8px;
+}
+
+.player-matchup li .member {
+    width: 100%;
+    padding: 0 4px;
+}
+
+.player-matchup li .matchup {
+
+}

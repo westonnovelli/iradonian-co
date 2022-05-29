@@ -1,0 +1,85 @@
+.member {
+    display: grid;
+    grid-template-rows: auto;
+    align-items: center;
+    gap: 8px;
+    width: 40%;
+    /* border: 1px solid #7c7c7c; */
+    background: #2e415ac3;
+    border-radius: 2px;
+}
+
+.member.officer .title{
+    /* border-color: #dfbd69; */
+    color: #dfbd69;
+}
+
+.member.left {
+    grid-template-columns: 36px 1fr 75px 80px;
+}
+
+.member.right {
+    grid-template-columns: 80px 75px 1fr 36px;
+}
+
+.member .picture {
+    position: relative;
+    top: -18px;
+    border-radius: 4px;
+}
+
+.member .picture img {
+    height: 36px;
+    width: 36px;
+    border-radius: 8px;
+}
+
+.member.right .picture {
+    order: 4;
+}
+
+.member .picture .portrait {
+    position: absolute;
+    z-index: 0;
+}
+
+.member .picture .outline {
+    position: absolute;
+    z-index: 1;
+}
+
+.member .id {
+    display: flex;
+    flex-direction: column;
+    padding: 2px;
+}
+
+.member.right .id {
+    order: 3;
+}
+
+.member .name {
+}
+
+.member .title {
+    color: #a1a5a5;
+    font-size: 12px;
+}
+
+.member .gp {
+}
+
+.member.right .gp {
+    order: 2;
+}
+
+.member .league {
+}
+
+.member.left .league, .member.left .gp {
+    text-align: right;
+}
+
+.member.right .league {
+    order: 1;
+}
