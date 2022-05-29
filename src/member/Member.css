@@ -16,11 +16,11 @@
 }
 
 .member.left {
-    grid-template-columns: 36px 1fr 75px 80px;
+    grid-template-columns: 36px 1fr 75px 90px;
 }
 
 .member.right {
-    grid-template-columns: 80px 75px 1fr 36px;
+    grid-template-columns: 90px 75px 1fr 36px;
 }
 
 .member .picture {
