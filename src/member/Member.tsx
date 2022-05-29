@@ -1,6 +1,8 @@
 import React from 'react';
+import readable from '../number';
 import type { Member as MemberType } from '../data/guild-profile/guild-profile.types';
 import './Member.css';
+import './Responsive.css';
 
 interface Props {
     member: MemberType;
@@ -8,6 +10,10 @@ interface Props {
 }
 
 const Member: React.FC<Props> = ({member, rtl = false}) => {
+    const gp = member.galactic_power.toLocaleString('en-us');
+    const shortGp = readable(`${member.galactic_power}`, 2);
+
+    const smallScreen = window.matchMedia('(max-width: 768px)').matches;
     return (
         <div className={`member ${rtl ? 'right' : 'left'} ${member.member_level > 2 ? 'officer' : ''}`}>
             <div className="picture">
@@ -18,7 +24,7 @@ const Member: React.FC<Props> = ({member, rtl = false}) => {
                 <span className="name">{member.player_name}</span>
                 <span className="title">{member.title}</span>
             </div>
-            <span className="gp">{member.galactic_power.toLocaleString('en-us')}</span>
+            <span className="gp" title={gp}>{smallScreen ? shortGp : gp}</span>
             <span className="league">{member.league_name && member.league_name}</span>
         </div>
     );

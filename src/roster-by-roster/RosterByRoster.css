@@ -1,8 +1,10 @@
 .roster-by-roster {
+    width: 100%;
 }
 
 .roster-by-roster .summary {
-    margin-bottom: 16px;
+    margin: 16px 8px;
+    width: calc(100% - 24px);
 }
 
 .roster-by-roster .matchup-dimension {
@@ -12,8 +14,8 @@
 .summary {
     display: grid;
     grid-template-columns: 1fr 1fr;
+    gap: 8px;
     grid-template-rows: auto;
-    width: 100%;
 }
 
 .summary .guild-profile {
@@ -22,6 +24,10 @@
 
 .guild-profile {
     text-align: center;
+    background: #2e415ac3;
+    border-radius: 2px;
+    box-shadow: 0 1px 1px 0 rgba(0,0,0,0.14), 0 2px 1px -1px rgba(0,0,0,0.12), 0 1px 3px 0 rgba(0,0,0,0.20);
+    padding: 32px;
 }
 
 .guild-profile img {
@@ -42,7 +48,7 @@
 }
 
 .player-matchup {
-    width: 100%;
+    width: calc(100% - 8px);
 }
 
 .player-matchup ul {
@@ -56,15 +62,13 @@
     grid-template-columns: 1fr 80px 1fr;
     grid-template-rows: auto;
     gap: 16px;
-    margin: 0 24px;
-    margin-bottom: 8px;
+    margin: 0 16px 8px 16px;
 }
 
 .player-matchup li .member {
     width: 100%;
-    padding: 0 4px;
 }
 
 .player-matchup li .matchup {
-
+    place-self: center;
 }

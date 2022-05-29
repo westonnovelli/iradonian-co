@@ -2,10 +2,9 @@ import queryString from 'query-string';
 import React from 'react';
 import './App.css';
 import useGuildProfile from './data/guild-profile/use-guild-profile';
-import RosterByRoster from './RosterByRoster';
+import RosterByRoster from './roster-by-roster/RosterByRoster';
 
 const App: React.FC = () => {
-  console.log(window.location.search);
   const { guild: guildQuery } = queryString.parse(window.location.search);
   const guild2Id = (Array.isArray(guildQuery) ? guildQuery.filter(g => g !== null)[0] : guildQuery) ?? '';
   const guild1 = useGuildProfile();

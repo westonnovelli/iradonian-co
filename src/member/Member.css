@@ -4,13 +4,14 @@
     align-items: center;
     gap: 8px;
     width: 40%;
-    /* border: 1px solid #7c7c7c; */
     background: #2e415ac3;
     border-radius: 2px;
+    box-shadow: 0 1px 1px 0 rgba(0,0,0,0.14), 0 2px 1px -1px rgba(0,0,0,0.12), 0 1px 3px 0 rgba(0,0,0,0.20);
+    padding: 0 4px;
+    box-sizing: border-box;
 }
 
-.member.officer .title{
-    /* border-color: #dfbd69; */
+.member.officer .title {
     color: #dfbd69;
 }
 
@@ -52,6 +53,7 @@
     display: flex;
     flex-direction: column;
     padding: 2px;
+    overflow: hidden;
 }
 
 .member.right .id {
@@ -59,6 +61,9 @@
 }
 
 .member .name {
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
 }
 
 .member .title {
@@ -74,6 +79,7 @@
 }
 
 .member .league {
+    font-family: 'Courier New', Courier, monospace;
 }
 
 .member.left .league, .member.left .gp {

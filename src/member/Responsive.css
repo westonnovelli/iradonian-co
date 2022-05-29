@@ -1,0 +1,37 @@
+@media only screen and (max-width: 768px) {
+    .member .picture {
+        display: none;
+    }
+
+    .member.left {
+        grid-template-columns: 1fr 2em 85px;
+    }
+
+    .member.right {
+        grid-template-columns: 85px 2em 1fr;
+    }
+}
+
+@media only screen and (max-width: 600px) {
+    .member .picture, .member .title {
+        display: none;
+    }
+
+    .member.officer .name {
+        color: #dfbd69;
+    }
+
+    .member .league {
+        text-overflow: clip;
+        white-space: nowrap;
+        overflow: hidden;
+    }
+
+    .member.left {
+        grid-template-columns: 1fr 2em 1.2em;
+    }
+
+    .member.right {
+        grid-template-columns: 1.2em 2em 1fr;
+    }
+}

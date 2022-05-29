@@ -1,9 +1,10 @@
 import React from 'react';
 import { sortAndDeduplicateDiagnostics } from 'typescript';
-import Matchup from './comparison/Matchup';
-import type { GuildProfile, Member } from './data/guild-profile/guild-profile.types';
-import MemberC from './member/Member';
+import Matchup from '../comparison/Matchup';
+import type { GuildProfile, Member } from '../data/guild-profile/guild-profile.types';
+import MemberC from '../member/Member';
 import './RosterByRoster.css';
+import './Responsive.css';
 
 interface Props {
     guild1: GuildProfile;
