@@ -4,6 +4,7 @@ import type { GuildProfile, Member } from '../data/guild-profile/guild-profile.t
 import MemberC from '../member/Member';
 import './RosterByRoster.css';
 import './Responsive.css';
+import usePlayers from '../data/player/use-players';
 
 interface Props {
     guild1: GuildProfile;
@@ -11,6 +12,21 @@ interface Props {
 }
 
 const GuildSummary: React.FC<Props['guild1']> = (guild) => {
+    const members = guild?.members ?? [];
+    const allyCodes = members.map((member) => member?.ally_code?.toString() ?? '').filter(x => x !== '');
+    const { players = [] } = usePlayers(allyCodes);
+    const glCount = players.reduce((acc, { units = [] }) => {
+        const gls = units.filter(unit => unit.is_galactic_legend);
+        acc += gls.length;
+        return acc;
+    }, 0);
+
+    const ultimateCount = players.reduce((acc, { units = [] }) => {
+        const gls = units.filter(unit => unit.has_ultimate);
+        acc += gls.length;
+        return acc;
+    }, 0);
+
     return (
         <div className="guild-profile">
             <h1 title={guild.name}>{guild.name}</h1>
@@ -18,6 +34,7 @@ const GuildSummary: React.FC<Props['guild1']> = (guild) => {
             <div><label>Total GP</label> {guild.galactic_power?.toLocaleString('en-us')}</div>
             <div><label>Average GAC Skill Rating</label> {guild.avg_skill_rating}</div>
             <div><label>Size</label> {guild.member_count} of 50</div>
+            <div><label>GL Count</label> {glCount} <label>(Ults)</label> {ultimateCount}</div>
         </div>
     );
 

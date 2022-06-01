@@ -1,6 +1,6 @@
 export interface Root {
     data: Player;
-    units: UnitBlob[];
+    units: Unit[]; // UnitBlob[] from swgoh.gg
     mods: Mod[];
 }
 
@@ -14,38 +14,38 @@ export interface Player {
     galactic_power: number;
     character_galactic_power: number;
     ship_galactic_power: number;
-    ship_battles_won: number;
-    pvp_battles_won: number;
-    pve_battles_won: number;
-    pve_hard_won: number;
-    galactic_war_won: number;
-    guild_raid_won: number;
-    guild_contribution: number;
-    guild_exchange_donations: number;
-    season_full_clears: number;
-    season_successful_defends: number;
-    season_league_score: number;
-    season_undersized_squad_wins: number;
-    season_promotions_earned: number;
-    season_banners_earned: number;
-    season_offensive_battles_won: number;
-    season_territories_defeated: number;
+    // ship_battles_won: number;
+    // pvp_battles_won: number;
+    // pve_battles_won: number;
+    // pve_hard_won: number;
+    // galactic_war_won: number;
+    // guild_raid_won: number;
+    // guild_contribution: number;
+    // guild_exchange_donations: number;
+    // season_full_clears: number;
+    // season_successful_defends: number;
+    // season_league_score: number;
+    // season_undersized_squad_wins: number;
+    // season_promotions_earned: number;
+    // season_banners_earned: number;
+    // season_offensive_battles_won: number;
+    // season_territories_defeated: number;
     url: string;
-    arena: SquadArena;
-    fleet_arena: FleetArena;
+    // arena: SquadArena;
+    // fleet_arena: FleetArena;
     skill_rating: number;
     division_number: string;
     league_name: string;
-    league_frame_image: string;
-    league_blank_image: string;
-    league_image: string;
-    division_image: string;
-    portrait_image: string;
-    title: string;
-    guild_id: string;
-    guild_name: string;
-    guild_url: string;
-    mods: any[];
+    // league_frame_image: string;
+    // league_blank_image: string;
+    // league_image: string;
+    // division_image: string;
+    // portrait_image: string;
+    // title: string;
+    // guild_id: string;
+    // guild_name: string;
+    // guild_url: string;
+    // mods: any[];
 }
 
 export interface SquadArena {
@@ -72,15 +72,15 @@ export interface Unit {
     level: number;
     power: number;
     rarity: number;
-    gear: Gear[]; // current gear level's 6 slots
+    // gear: Gear[]; // current gear level's 6 slots
     url: string;
-    stats: Stats; // what is this
-    stat_diffs: StatDiffs; // and this
+    // stats: Stats; // what is this
+    // stat_diffs: StatDiffs; // and this
     zeta_abilities: string[];
     omicron_abilities: string[];
-    ability_data: Ability[];
-    mod_set_ids: number[];
-    combat_type: number;
+    // ability_data: Ability[];
+    // mod_set_ids: number[];
+    // combat_type: number;
     relic_tier: number;
     has_ultimate: boolean;
     is_galactic_legend: boolean;
