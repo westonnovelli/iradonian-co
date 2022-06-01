@@ -16,11 +16,11 @@
 }
 
 .member.left {
-    grid-template-columns: 36px 1fr 75px 90px;
+    grid-template-columns: 36px 1fr 75px;
 }
 
 .member.right {
-    grid-template-columns: 90px 75px 1fr 36px;
+    grid-template-columns: 75px 1fr 36px;
 }
 
 .member .picture {
@@ -88,4 +88,84 @@
 
 .member.right .league {
     order: 1;
+}
+
+.member.left.league-Kyber {
+    background: linear-gradient(90deg, 
+        rgba(46,65,90,1) 0%, 
+        rgba(46,65,90,1) 60%, 
+        rgba(46,136,243,1) 100%
+    );
+}
+
+.member.left.league-Aurodium {
+    background: linear-gradient(90deg, 
+        rgba(46,65,90,1) 0%, 
+        rgba(46,65,90,1) 60%, 
+        rgba(212,163,0,1) 100%
+    );
+}
+
+.member.left.league-Bronzium {
+    background: linear-gradient(90deg, 
+        rgba(46,65,90,1) 0%, 
+        rgba(46,65,90,1) 60%, 
+        rgba(90,56,20,1) 100%
+    );
+}
+
+.member.left.league-Chromium {
+    background: linear-gradient(90deg, 
+        rgba(46,65,90,1) 0%, 
+        rgba(46,65,90,1) 60%, 
+        rgba(109,109,110,1) 100%
+    );
+}
+
+.member.left.league-Carbonite {
+    background: linear-gradient(90deg, 
+        rgba(46,65,90,1) 0%, 
+        rgba(46,65,90,1) 60%, 
+        rgba(23,23,23,1) 100%
+    );
+}
+
+.member.right.league-Kyber {
+    background: linear-gradient(90deg, 
+        rgba(46,136,243,1) 0%,
+        rgba(46,65,90,1) 40%, 
+        rgba(46,65,90,1) 100%
+    );
+}
+
+.member.right.league-Aurodium {
+    background: linear-gradient(90deg, 
+        rgba(212,163,0,1) 0%,
+        rgba(46,65,90,1) 40%, 
+        rgba(46,65,90,1) 100%
+    );
+}
+
+.member.right.league-Bronzium {
+    background: linear-gradient(90deg, 
+        rgba(90,56,20,1) 0%,
+        rgba(46,65,90,1) 40%, 
+        rgba(46,65,90,1) 100%
+    );
+}
+
+.member.right.league-Chromium {
+    background: linear-gradient(90deg, 
+        rgba(109,109,110,1) 0%,
+        rgba(46,65,90,1) 40%, 
+        rgba(46,65,90,1) 100%
+    );
+}
+
+.member.right.league-Carbonite {
+    background: linear-gradient(90deg, 
+        rgba(23,23,23,1) 0%,
+        rgba(46,65,90,1) 40%, 
+        rgba(46,65,90,1) 100% 
+    );
 }

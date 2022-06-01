@@ -15,7 +15,7 @@ const Member: React.FC<Props> = ({member, rtl = false}) => {
 
     const smallScreen = window.matchMedia('(max-width: 768px)').matches;
     return (
-        <div className={`member ${rtl ? 'right' : 'left'} ${member.member_level > 2 ? 'officer' : ''}`}>
+        <div className={`member ${rtl ? 'right' : 'left'} ${member.member_level > 2 ? 'officer' : ''} ${member.league_name ? `league-${member.league_name}` : ''}`}>
             <div className="picture">
                 <img className="portrait" src={member.portrait_image} />
                 <img className="outline" src={member.league_frame_image} />
@@ -25,7 +25,6 @@ const Member: React.FC<Props> = ({member, rtl = false}) => {
                 <span className="title">{member.title}</span>
             </div>
             <span className="gp" title={gp}>{smallScreen ? shortGp : gp}</span>
-            <span className="league">{member.league_name && member.league_name}</span>
         </div>
     );
 };

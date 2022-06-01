@@ -26,10 +26,12 @@
 
 .matchup .leftWins {
     place-self: stretch start;
+    clip-path: polygon(100% 0%, 75% 50%, 100% 100%, 25% 100%, 0% 50%, 25% 0%);
 }
 
 .matchup .rightWins {
     place-self: stretch end;
+    clip-path: polygon(75% 0%, 100% 50%, 75% 100%, 0% 100%, 25% 50%, 0% 0%);
 }
 
 .matchup .tie {

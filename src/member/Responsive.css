@@ -4,11 +4,11 @@
     }
 
     .member.left {
-        grid-template-columns: 1fr 2em 85px;
+        grid-template-columns: 1fr 2em;
     }
 
     .member.right {
-        grid-template-columns: 85px 2em 1fr;
+        grid-template-columns: 2em 1fr;
     }
 }
 
@@ -28,10 +28,10 @@
     }
 
     .member.left {
-        grid-template-columns: 1fr 2em 1.2em;
+        grid-template-columns: 1fr 2em;
     }
 
     .member.right {
-        grid-template-columns: 1.2em 2em 1fr;
+        grid-template-columns: 2em 1fr;
     }
 }

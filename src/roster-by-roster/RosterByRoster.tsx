@@ -101,7 +101,7 @@ const RosterByRoster: React.FC<Props> = ({guild1, guild2}) => {
                         } else if (g1 && !g2) {
                             return <li key={i}><MemberC member={g1}/></li>;
                         } else if (!g1 && g2) {
-                            return <li key={i}><MemberC member={g2}/></li>;
+                            return <li key={i}><div/><div/><MemberC member={g2} rtl/></li>;
                         } else {
                             return null;
                         }
