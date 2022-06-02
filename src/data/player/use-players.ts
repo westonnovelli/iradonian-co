@@ -31,7 +31,7 @@ const usePlayers = (playerList: string[]): Result => {
             setLoading(true);
             fetchData();
         }
-    }, [playerList.toString()]);
+    }, [playerList]);
 
     return {
         players,

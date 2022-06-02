@@ -19,7 +19,7 @@
 }
 
 .summary .guild-profile {
-    place-self: center;
+    place-self: flex-end center;
 }
 
 .guild-profile {

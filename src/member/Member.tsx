@@ -17,8 +17,8 @@ const Member: React.FC<Props> = ({member, rtl = false}) => {
     return (
         <div className={`member ${rtl ? 'right' : 'left'} ${member.member_level > 2 ? 'officer' : ''} ${member.league_name ? `league-${member.league_name}` : ''}`}>
             <div className="picture">
-                <img className="portrait" src={member.portrait_image} />
-                <img className="outline" src={member.league_frame_image} />
+                {!smallScreen && <img className="portrait" src={member.portrait_image} />}
+                {!smallScreen && <img className="outline" src={member.league_frame_image} />}
             </div>
             <div className="id" style={{ textAlign: rtl ? 'right' : 'left' }}>
                 <span className="name">{member.player_name}</span>
