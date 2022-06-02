@@ -4,41 +4,13 @@ import type { GuildProfile, Member } from '../data/guild-profile/guild-profile.t
 import MemberC from '../member/Member';
 import './RosterByRoster.css';
 import './Responsive.css';
-import usePlayers from '../data/player/use-players';
+import GuildSummary from './GuildSummary';
 
 interface Props {
     guild1: GuildProfile;
-    guild2: GuildProfile
+    guild2: GuildProfile;
 }
 
-const GuildSummary: React.FC<Props['guild1']> = (guild) => {
-    const members = guild?.members ?? [];
-    const allyCodes = members.map((member) => member?.ally_code?.toString() ?? '').filter(x => x !== '');
-    const { players = [] } = usePlayers(allyCodes);
-    const glCount = players.reduce((acc, { units = [] }) => {
-        const gls = units.filter(unit => unit.is_galactic_legend);
-        acc += gls.length;
-        return acc;
-    }, 0);
-
-    const ultimateCount = players.reduce((acc, { units = [] }) => {
-        const gls = units.filter(unit => unit.has_ultimate);
-        acc += gls.length;
-        return acc;
-    }, 0);
-
-    return (
-        <div className="guild-profile">
-            <h1 title={guild.name}>{guild.name}</h1>
-            {guild.banner_logo_id && <img src={`https://swgoh.gg/static/img/assets/tex.${guild.banner_logo_id}.png`} />}
-            <div><label>Total GP</label> {guild.galactic_power?.toLocaleString('en-us')}</div>
-            <div><label>Average GAC Skill Rating</label> {guild.avg_skill_rating}</div>
-            <div><label>Size</label> {guild.member_count} of 50</div>
-            <div><label>GL Count</label> {glCount} <label>(Ults)</label> {ultimateCount}</div>
-        </div>
-    );
-
-}
 
 const LEAGUES: Record<string, number> = {
     KYBER: 10,
@@ -81,7 +53,7 @@ const SORTS: Record<string, {
     }
 }
 
-const RosterByRoster: React.FC<Props> = ({guild1, guild2}) => {
+const RosterByRoster: React.FC<Props> = ({guild1, guild2 }) => {
     const [sortingDimension, setSortingDimension] = React.useState('GP');
     const g1members = guild1?.members?.sort(SORTS[sortingDimension].sort) || [];
     const g2members = guild2?.members?.sort(SORTS[sortingDimension].sort) || [];

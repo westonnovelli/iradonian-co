@@ -4,19 +4,29 @@ import React from 'react';
 
 const baseUrl = process.env.REACT_APP_API_SERVER?.trim();
 
-const useGuildProfile = (guildId?: string): GuildProfile => {
+interface Result {
+    guild: GuildProfile;
+    loading: boolean;
+}
+
+const useGuildProfile = (guildId?: string): Result => {
     const [data, setData] = React.useState<any>({}); 
+    const [loading, setLoading] = React.useState(false); 
     React.useEffect(() => {
         async function fetchData() {
             const response = await fetch(`${baseUrl}/swgoh/guild_profile/${guildId ?? ''}`);
             const json = await response.json();
             setData(json?.data as GuildProfile);
+            setLoading(false);
         }
-
+        setLoading(true);
         fetchData();
     }, [guildId]);
 
-    return data;
+    return {
+        guild: data,
+        loading
+    };
 };
 
 export default useGuildProfile;

@@ -6,10 +6,13 @@ const baseUrl = process.env.REACT_APP_API_SERVER?.trim();
 
 interface Result {
     players: Root[]
+    loading: boolean;
 }
 
 const usePlayers = (playerList: string[]): Result => {
     const [players, setPlayers] = React.useState<Root[]>([]);
+    const [loading, setLoading] = React.useState(false);
+
     React.useEffect(() => {
         async function fetchData() {
             const response = await fetch(`${baseUrl}/swgoh/players/units`, {
@@ -20,14 +23,19 @@ const usePlayers = (playerList: string[]): Result => {
                 body: JSON.stringify({ players: playerList }),
             });
             const json = await response.json();
+            setLoading(false);
             setPlayers(json as Root[]);
         }
 
-        fetchData();
-    }, []);
+        if (playerList.length > 0) {
+            setLoading(true);
+            fetchData();
+        }
+    }, [playerList.toString()]);
 
     return {
-        players
+        players,
+        loading,
     };
 };
 
