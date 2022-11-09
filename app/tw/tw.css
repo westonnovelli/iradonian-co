@@ -1,13 +1,13 @@
-.roster-by-roster {
+.tw {
     width: 100%;
 }
 
-.roster-by-roster .summary {
+.tw .summary {
     margin: 16px 8px;
     width: calc(100% - 24px);
 }
 
-.roster-by-roster .matchup-dimension {
+.tw .matchup-dimension {
     margin-bottom: 16px;
 }
 

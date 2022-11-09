@@ -1,4 +1,4 @@
-import type { Player, Unit, UnitBlob } from './player.types';
+import type { Player, Unit, UnitBlob } from '../../../app/tw/player.types';
 
 import React from 'react';
 

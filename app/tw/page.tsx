@@ -1,16 +1,24 @@
+import type { GuildProfile, Member } from './guild-profile.types';
 import React from 'react';
-import Matchup from '../../app/tw/comparison/Matchup';
-import type { GuildProfile, Member } from '../../app/tw/guild-profile.types';
-import MemberC from '../../app/tw/member/Member';
-import './RosterByRoster.css';
-import './Responsive.css';
-import GuildSummary from '../../app/tw/GuildSummary';
 
-interface Props {
-    guild1: GuildProfile;
-    guild2: GuildProfile;
+import GuildSummary from './GuildSummary';
+import MemberC from './member/Member';
+import Matchup from './comparison/Matchup';
+import './tw-responsive.css';
+import './tw.css';
+
+import { guildProfile_short } from './mocks_short';
+const mock = false;
+
+async function getGuildProfile(guildId = '6kigC5URTk6Sih8sHfs0nQ'): Promise<GuildProfile> {
+    if (!mock) {
+        const response = await fetch(`https://swgoh.gg/api/guild-profile/${guildId}/`);
+        const json = await response.json();
+        return json.data;
+    } else {
+        return guildProfile_short.data;
+    }
 }
-
 
 const LEAGUES: Record<string, number> = {
     KYBER: 10,
@@ -31,10 +39,10 @@ const SORTS: Record<string, {
     GP: {
         sort: (a: Member, b: Member) => b.galactic_power - a.galactic_power,
         compare: (a: Member, b: Member) => [
-                a.galactic_power > b.galactic_power,
-                a.galactic_power < b.galactic_power,
-                a.galactic_power === b.galactic_power,
-            ]
+            a.galactic_power > b.galactic_power,
+            a.galactic_power < b.galactic_power,
+            a.galactic_power === b.galactic_power,
+        ]
     },
     L: {
         sort: (a: Member, b: Member) => {
@@ -53,29 +61,24 @@ const SORTS: Record<string, {
     }
 }
 
-const RosterByRoster: React.FC<Props> = ({guild1, guild2 }) => {
-    // const [sortingDimension, setSortingDimension] = React.useState('GP');
-    const [sortingDimension, setSortingDimension] = ['GP', () => {}];
-    const g1members = guild1?.members?.sort(SORTS[sortingDimension].sort) || [];
-    const g2members = guild2?.members?.sort(SORTS[sortingDimension].sort) || [];
+const TW = async ({ searchParams }: { searchParams: { guild: string } }) => {
+    const guild2Id = searchParams?.guild;
+    const guild1 = await getGuildProfile();
+    const guild2 = await getGuildProfile(guild2Id);
+
+    const g1members = guild1.members;
+    const g2members = guild2.members;
+
+    const [sortingDimension, setSortingDimension] = ['GP', () => { }];
+
     return (
-        <div className="roster-by-roster">
+        <div className="tw">
             <div className="summary">
                 <GuildSummary {...guild1} />
                 <GuildSummary {...guild2} />
             </div>
-            {/* {g1members.length + g2members.length > 0 && (
-                <div className="matchup-dimension">
-                    Sort rosters by:
-                    <select onChange={(e) => {
-                        setSortingDimension(e.target.value);
-                    }}>
-                        <option value="GP">Galactic Power (GP)</option>
-                        <option value="L">GAC League</option>
-                    </select>
-                </div>
-            )} */}
-            {/* <div className="player-matchup">
+            <div className="matchup-dimension"></div>
+            <div className="player-matchup">
                 <ul>
                     {Array.from(Array(50)).map((_, i) => {
                         const g1 = g1members[i];
@@ -83,23 +86,23 @@ const RosterByRoster: React.FC<Props> = ({guild1, guild2 }) => {
                         if (g1 && g2) {
                             return (
                                 <li key={i}>
-                                    <MemberC member={g1}/>
+                                    <MemberC member={g1} />
                                     <Matchup a={g1} b={g2} compareTo={SORTS[sortingDimension].compare} />
-                                    <MemberC member={g2} rtl/>
+                                    <MemberC member={g2} rtl />
                                 </li>
                             );
                         } else if (g1 && !g2) {
-                            return <li key={i}><MemberC member={g1}/></li>;
+                            return <li key={i}><MemberC member={g1} /></li>;
                         } else if (!g1 && g2) {
-                            return <li key={i}><div/><div/><MemberC member={g2} rtl/></li>;
+                            return <li key={i}><div /><div /><MemberC member={g2} rtl /></li>;
                         } else {
                             return null;
                         }
                     })}
                 </ul>
-            </div> */}
+            </div>
         </div>
     );
 };
 
-export default RosterByRoster;
+export default TW;

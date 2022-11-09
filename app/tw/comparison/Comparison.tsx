@@ -1,9 +1,9 @@
-import type { GuildProfile, Member } from "../data/guild-profile/guild-profile.types";
+import type { GuildProfile, Member } from "../guild-profile.types";
 
 import React from "react";
 
 import './Comparison.css';
-import Guild from "../guild/Guild";
+import Guild from "../../../src/guild/Guild";
 import Matchup from "./Matchup";
 
 interface Props {

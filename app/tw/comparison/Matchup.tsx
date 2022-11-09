@@ -1,4 +1,4 @@
-import type { Member } from "../data/guild-profile/guild-profile.types";
+import type { Member } from "../guild-profile.types";
 
 import React from "react";
 import "./Matchup.css";

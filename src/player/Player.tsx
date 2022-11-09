@@ -1,5 +1,5 @@
 import React from "react";
-import type { Player as PlayerType, Unit } from '../data/player/player.types';
+import type { Player as PlayerType, Unit } from '../../app/tw/player.types';
 import './Player.css';
 
 interface Props {

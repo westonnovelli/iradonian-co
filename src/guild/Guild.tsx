@@ -1,7 +1,7 @@
 import React from 'react';
 import './Guild.css';
-import { GuildProfile } from '../data/guild-profile/guild-profile.types';
-import Member from '../member/Member';
+import { GuildProfile } from '../../app/tw/guild-profile.types';
+import Member from '../../app/tw/member/Member';
 
 interface Props {
   guild: GuildProfile;

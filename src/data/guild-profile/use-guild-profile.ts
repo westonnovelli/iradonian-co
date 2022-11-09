@@ -1,4 +1,4 @@
-import type { GuildProfile } from './guild-profile.types';
+import type { GuildProfile } from '../../../app/tw/guild-profile.types';
 
 import React from 'react';
 
