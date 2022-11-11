@@ -1,10 +1,11 @@
 'use client';
 
 import React from 'react';
-import MatchupList from './comparison/MatchupList';
+import MatchupList, { SORTS } from './MatchupList';
+import { GuildProfile } from '../guild-profile.types';
 
-const LowerSection = () => {
-    const [sortingDimension, setSortingDimension] = React.useState('GP');
+const WithSortControls = ({ guild1, guild2 }: { guild1: GuildProfile, guild2: GuildProfile }) => {
+    const [sortingDimension, setSortingDimension] = React.useState(Object.keys(SORTS)[0]);
 
     return (
         <>
@@ -17,12 +18,9 @@ const LowerSection = () => {
                     <option value="L">GAC League</option>
                 </select>
             </div>
-            <React.Suspense fallback={null}>
-                {/* @ts-expect-error Server Component */}
-                {/* <MatchupList sortingDimension={sortingDimension} /> */}
-            </React.Suspense>
+            <MatchupList guild1={guild1} guild2={guild2} sortingDimension={sortingDimension} />
         </>
     );
 };
 
-export default LowerSection;
+export default WithSortControls;

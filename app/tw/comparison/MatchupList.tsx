@@ -1,9 +1,10 @@
-import type { Member } from '../guild-profile.types';
+'use client';
+
+import type { GuildProfile, Member } from '../guild-profile.types';
 import React from 'react';
 
 import MemberC from '../member/Member';
 import Matchup from './Matchup';
-import getGuildProfile from '../get-guild-profile';
 
 const LEAGUES: Record<string, number> = {
     KYBER: 10,
@@ -17,7 +18,7 @@ const LEAGUES: Record<string, number> = {
 type SortingFn = (a: Member, b: Member) => number;
 type CompareFn = (a: Member, b: Member) => [boolean, boolean, boolean];
 
-const SORTS: Record<string, {
+export const SORTS: Record<string, {
     sort: SortingFn,
     compare: CompareFn
 }> = {
@@ -46,15 +47,10 @@ const SORTS: Record<string, {
     }
 };
 
-const MatchupList = async (props: { searchParams: { guild: string }, sortingDimension: keyof typeof SORTS }) => {
-    const guildId = props?.searchParams?.guild;
-
-    const guild1 = await getGuildProfile();
-    const guild2 = await getGuildProfile(guildId);
-
+const MatchupList = (props: { guild1: GuildProfile, guild2: GuildProfile, sortingDimension: keyof typeof SORTS }) => {
     const sortingDimension = props?.sortingDimension ?? 'GP';
-    const g1members = guild1?.members?.sort(SORTS[sortingDimension].sort) || [];
-    const g2members = guild2?.members?.sort(SORTS[sortingDimension].sort) || [];
+    const g1members = props.guild1?.members?.sort(SORTS[sortingDimension].sort) || [];
+    const g2members = props.guild2?.members?.sort(SORTS[sortingDimension].sort) || [];
 
     return (
         <div className="player-matchup">

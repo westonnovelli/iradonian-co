@@ -2,9 +2,8 @@ import React from 'react';
 import getGuildProfile from '../get-guild-profile';
 import GuildAggregate, { Loader } from './GuildAggregate';
 
-const GuildSummary = async ({ fallback = false, searchParams }: { fallback: boolean, searchParams: { guild: string } }) => {
-    const guildId = searchParams?.guild;
-    const guild = await getGuildProfile(fallback ? undefined : guildId);
+const GuildSummary = async ({ guildId }: { guildId?: string }) => {
+    const guild = await getGuildProfile(guildId);
 
     return (
         <div className="guild-profile">

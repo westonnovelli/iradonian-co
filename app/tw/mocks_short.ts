@@ -63,7 +63,6 @@ export const guildProfile_short = {
         "avg_skill_rating": 2162,
         "last_sync": "2022-05-20T03:06:57.997931"
     },
-    // @ts-expect-error
     "message": null,
 };
 
@@ -134,7 +133,6 @@ export const Player_short = {
         "guild_id": "PhUH2R30S4yKR34DR7UpSQ",
         "guild_name": "Iridonian Company",
         "guild_url": "/g/PhUH2R30S4yKR34DR7UpSQ/",
-        // @ts-expect-error
         "mods": []
     },
     "units": [

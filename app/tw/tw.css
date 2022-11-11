@@ -20,6 +20,7 @@
 
 .summary .guild-profile {
     place-self: flex-end center;
+    min-width: 50%;
 }
 
 .guild-profile {

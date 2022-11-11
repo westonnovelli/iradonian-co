@@ -5,7 +5,7 @@ const mock = false;
 
 async function getGuildProfile(guildId = DEFAULT_GUILD): Promise<GuildProfile> {
     if (!mock) {
-        const response = await fetch(`https://swgoh.gg/api/guild-profile/${guildId}/`);
+        const response = await fetch(`https://swgoh.gg/api/guild-profile/${guildId}/`, { cache: 'no-store' });
         const json = await response.json();
         return json.data;
     } else {
