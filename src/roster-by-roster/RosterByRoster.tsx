@@ -4,7 +4,7 @@ import type { GuildProfile, Member } from '../../app/tw/guild-profile.types';
 import MemberC from '../../app/tw/member/Member';
 import './RosterByRoster.css';
 import './Responsive.css';
-import GuildSummary from '../../app/tw/GuildSummary';
+import GuildSummary from '../../app/tw/guild/GuildSummary';
 
 interface Props {
     guild1: GuildProfile;
