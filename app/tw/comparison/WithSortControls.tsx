@@ -4,7 +4,7 @@ import React from 'react';
 import MatchupList, { SORTS } from './MatchupList';
 import { GuildProfile } from '../guild-profile.types';
 
-const WithSortControls = ({ guild1, guild2 }: { guild1: GuildProfile, guild2: GuildProfile }) => {
+const WithSortControls = ({ guild1, guild2, children }: { guild1: GuildProfile, guild2: GuildProfile, children: React.ReactNode }) => {
     const [sortingDimension, setSortingDimension] = React.useState(Object.keys(SORTS)[0]);
 
     return (
@@ -18,7 +18,9 @@ const WithSortControls = ({ guild1, guild2 }: { guild1: GuildProfile, guild2: Gu
                     <option value="L">GAC League</option>
                 </select>
             </div>
-            <MatchupList guild1={guild1} guild2={guild2} sortingDimension={sortingDimension} />
+            <MatchupList guild1={guild1} guild2={guild2} sortingDimension={sortingDimension}>
+                {children}
+            </MatchupList>
         </>
     );
 };

@@ -1,7 +1,7 @@
 import { Player_short } from "./mocks_short";
 import { Player, Root, Unit } from "./player.types";
 
-const mock = false;
+const mock = true;
 
 const parseUnit = (unit: any): Unit => {
     const data = unit.data ?? {};
@@ -43,7 +43,7 @@ const parsePlayer = (player: any): ParsedPlayer => {
     };
 }
 
-const fetchPlayerByAllyCode = async (allyCode: string): Promise<ParsedPlayer> => {
+export const fetchPlayerByAllyCode = async (allyCode: string): Promise<ParsedPlayer> => {
     if (!mock) {
         const response = await fetch(`https://swgoh.gg/api/player/${allyCode}`);
         try {
