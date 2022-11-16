@@ -52,7 +52,7 @@ function getMatchingNode(value: string, node: React.ReactNode): React.ReactNode 
     if (typeof node === 'boolean' || typeof node === 'string' || typeof node === 'number') return null;
     try {
         // @ts-expect-error
-        return node.filter(({ key }: { key: string }) => key === value);
+        return node.find(({ key }: { key: string }) => key === value);
     } catch (e) {
         return null;
     }
@@ -76,15 +76,11 @@ const MatchupList = (props: { guild1: GuildProfile, guild2: GuildProfile, sortin
                         return (
                             <li key={i}>
                                 <MemberC member={g1}>
-                                    <React.Suspense fallback={null}>
-                                        {g1Details}
-                                    </React.Suspense>
+                                    {g1Details}
                                 </MemberC>
                                 <Matchup a={g1} b={g2} compareTo={SORTS[sortingDimension].compare} />
                                 <MemberC member={g2} rtl>
-                                    <React.Suspense fallback={null}>
-                                        {g2Details}
-                                    </React.Suspense>
+                                    {g2Details}
                                 </MemberC>
                             </li>
                         );

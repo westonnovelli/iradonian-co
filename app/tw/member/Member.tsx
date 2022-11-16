@@ -38,7 +38,7 @@ const Member: React.FC<Props> = ({ member, rtl = false, children }) => {
                 <span className="gp-long">{gp}</span>
                 <span className="gp-short" title={gp}>{shortGp}</span>
             </div>
-            {children}
+            {expanded && children}
         </div>
     );
 };
