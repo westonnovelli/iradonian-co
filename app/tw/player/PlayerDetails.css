@@ -1,10 +1,38 @@
 .player-details {
     display: grid;
-    grid-template-columns: repeat(2, 50%);
+    grid-template-columns: 80px auto;
     grid-template-rows: auto;
     column-gap: 8px;
+    row-gap: 4px;
+    margin: 0 4px 4px 4px;
+    padding-bottom: 4px;
+    border-radius: 0 0 2px 2px;
 }
 
 .player-details label {
     text-align: right;
+    color: #a1a5a5;
+    font-size: .8em;
+    align-self: center;
+}
+
+.player-details .gl-grid {
+    width: calc(7 * 40px);
+}
+
+.player-details .gl-grid table {
+    border: 1px solid #2e415ac3;
+    border-collapse: collapse;
+}
+
+.player-details .gl-grid table td, .player-details .gl-grid table th {
+    width: 40px;
+    border: 1px solid #2e415ac3;
+    text-align: center;
+    font-size: 12px;
+    line-height: 12px;
+}
+
+.player-details .gl-grid table td.ultimate {
+    background: #9e7330;
 }

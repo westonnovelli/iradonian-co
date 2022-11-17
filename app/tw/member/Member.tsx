@@ -20,12 +20,11 @@ const Member: React.FC<Props> = ({ member, rtl = false, children }) => {
     const [expanded, setExpanded] = React.useState(false);
 
     return (
-        <div
-            role="button"
-            onClick={() => setExpanded(prev => !prev)}
-        >
+        <div>
             <div
                 className={`member ${rtl ? 'right' : 'left'} ${member.member_level > 2 ? 'officer' : ''} ${member.league_name ? `league-${member.league_name}` : ''}`}
+                role="button"
+                onClick={() => setExpanded(prev => !prev)}
             >
                 <div className="picture">
                     <img className="portrait" src={member.portrait_image} />
