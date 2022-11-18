@@ -1,7 +1,7 @@
 import { Player_short } from "./mocks_short";
-import { Player, Root, Unit } from "./player.types";
+import { Datacron, Mod, Player, Root, SecondaryStat, Unit } from "./player.types";
 
-const mock = false;
+const mock = true;
 
 const parseUnit = (unit: any): Unit => {
     const data = unit.data ?? {};
@@ -19,12 +19,52 @@ const parseUnit = (unit: any): Unit => {
         has_ultimate: data.has_ultimate,
         is_galactic_legend: data.is_galactic_legend,
     };
-}
+};
 
-export type ParsedPlayer = Player & { units: Root['units'] };
+const parseSecondaryStat = (stat: any): SecondaryStat => {
+    return {
+        name: stat.name,
+        stat_id: stat.stat_id,
+        value: stat.value,
+        display_value: stat.display_value,
+        roll: stat.roll,
+    };
+};
+
+const parseMod = (mod: any): Mod => {
+    return {
+        id: mod.id,
+        level: mod.level,
+        tier: mod.tier,
+        rarity: mod.rarity,
+        set: mod.set,
+        slot: mod.slot,
+        primary_stat: {
+            name: mod.primary_stat?.name,
+            stat_id: mod.primary_stat?.stat_id,
+            value: mod.primary_stat?.value,
+            display_value: mod.primary_stat?.display_value,
+        },
+        character: mod.character,
+        secondary_stats: mod.secondary_stats.map(parseSecondaryStat),
+    };
+};
+
+const parseDatacron = (datacron: any): Datacron => {
+    return {
+        id: datacron.id,
+        tier: datacron.tier,
+    }
+};
+
+export type ParsedPlayer = Player & {
+    units: Root['units'],
+    mods: Root['mods'],
+    datacrons: Root['datacrons']
+};
 
 const parsePlayer = (player: any): ParsedPlayer => {
-    const { data, units } = player ?? {};
+    const { data, units, mods, datacrons } = player ?? {};
     return {
         ally_code: data.ally_code,
         arena_leader_base_id: data.arena_leader_base_id,
@@ -39,7 +79,9 @@ const parsePlayer = (player: any): ParsedPlayer => {
         league_name: data.league_name,
         last_updated: data.last_updated,
         url: data.url,
-        units: units.map(parseUnit)
+        units: units.map(parseUnit),
+        mods: mods.map(parseMod),
+        datacrons: datacrons.map(parseDatacron),
     };
 }
 

@@ -2,6 +2,7 @@ export interface Root {
     data: Player;
     units: Unit[]; // UnitBlob[] from swgoh.gg
     mods: Mod[];
+    datacrons: Datacron[];
 }
 
 export interface Player {
@@ -183,4 +184,29 @@ export interface SecondaryStat {
     value: number;
     display_value: string;
     roll: number;
+}
+
+export interface Datacron {
+    id: string;
+    // set_id: number;
+    // template_base_id: string;
+    // reroll_count: number;
+    // reroll_index: number;
+    // locked: boolean;
+    tier: number;
+    // tiers: DatacronTier[];
+    // url: string;
+}
+
+export interface DatacronTier {
+    scope_identifier: number;
+    scope_icon: string | null;
+    scope_target_name: string;
+    target_rule_id: string | null;
+    ability_id: string | null;
+    stat_type: number;
+    stat_value: number;
+    required_unit_tier: number;
+    required_relic_tier: number;
+    ability_description: string | null;
 }

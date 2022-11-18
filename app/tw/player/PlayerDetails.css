@@ -16,8 +16,19 @@
     align-self: center;
 }
 
+.player-details a.profile-link {
+    color: inherit;
+    text-decoration: none;
+}
+
+.player-details a.profile-link svg {
+    color: inherit;
+    height: 14px;
+    fill: currentColor;
+}
+
 .player-details .gl-grid {
-    width: calc(7 * 40px);
+    width: calc(9 * 30px);
 }
 
 .player-details .gl-grid table {
@@ -26,7 +37,7 @@
 }
 
 .player-details .gl-grid table td, .player-details .gl-grid table th {
-    width: 40px;
+    width: 30px;
     border: 1px solid #2e415ac3;
     text-align: center;
     font-size: 12px;
@@ -35,4 +46,39 @@
 
 .player-details .gl-grid table td.ultimate {
     background: #9e7330;
+}
+
+.player-details .omi-grid {
+    width: calc(18 * 3 * 4px);
+}
+
+.player-details .omi-grid table {
+    border: 1px solid #2e415ac3;
+    border-collapse: collapse;
+}
+
+.player-details .omi-grid table td, .player-details .omi-grid table th {
+    width: calc(3 * 4px);
+    border: 1px solid #2e415ac3;
+    text-align: center;
+    font-size: 12px;
+    line-height: 12px;
+    overflow: hidden;
+}
+
+.player-details .mods {
+    display: flex;
+    gap: 16px;
+    align-items: center;
+}
+
+.player-details .mods > div {
+    display: flex;
+}
+
+.player-details .mods > div > label {
+    align-self: start;
+    justify-self: end;
+    line-height: 20px;
+    font-size: 10px;
 }

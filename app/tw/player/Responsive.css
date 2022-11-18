@@ -1,0 +1,12 @@
+@media only screen and (max-width: 768px) {
+    
+}
+
+@media only screen and (max-width: 600px) {
+    .player-details {
+        column-gap: 4px;
+        row-gap: 2px;
+        grid-template-columns: 72px auto;
+        margin: 0;
+    }
+}
