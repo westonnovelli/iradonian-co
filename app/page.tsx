@@ -1,3 +1,5 @@
+import React from 'react';
+import GuildLink from './GuildLink';
 import styles from './page.module.css';
 
 const GUILD_NAME = process.env.GUILD_NAME ?? 'Unique';
@@ -16,10 +18,13 @@ export default function Home() {
         </p>
 
         <div className={styles.grid}>
-          <a href="/tw" className={styles.card}>
-            <h2>Territory War &rarr;</h2>
-            <p>Enter a guild id from swgoh.gg</p>
-          </a>
+          <React.Suspense fallback={
+            <div className={styles.card}>
+              <h2>Territory War &rarr;</h2>
+            </div>
+          }>
+            <GuildLink className={styles.card}/>
+          </React.Suspense>
 
           <a
             href={`https://swgoh.gg/g/${GUILD_ID}/`}

@@ -86,6 +86,7 @@
   border-radius: 10px;
   transition: color 0.15s ease, border-color 0.15s ease;
   max-width: 300px;
+  height: 105px;
 }
 
 .card:hover,
@@ -126,6 +127,7 @@
     background-clip: text;
     text-fill-color: transparent;
   }
+
   .title a {
     background: linear-gradient(180deg, #0070f3 0%, #0153af 100%);
     -webkit-background-clip: text;
@@ -133,13 +135,16 @@
     background-clip: text;
     text-fill-color: transparent;
   }
+
   .card,
   .footer {
     border-color: #222;
   }
+
   .code {
     background: #111;
   }
+
   .logo img {
     filter: invert(1);
   }
