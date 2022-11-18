@@ -1,5 +1,6 @@
 import React from 'react';
 import { fetchPlayerByAllyCode, ParsedPlayer } from '../get-players';
+import { getTWOmicronCount } from '../omicrons';
 import type { Datacron, Mod, Unit } from '../player.types';
 import { NewTab } from './icons';
 import './PlayerDetails.css';
@@ -23,7 +24,7 @@ function getGearOrRelicLevel(unit: Unit) {
 
 const GLs = [{
     shortName: 'Rey',
-    baseId: 'REY',
+    baseId: 'GLREY',
 }, {
     shortName: 'SLKR',
     baseId: 'SUPREMELEADERKYLOREN',
@@ -53,131 +54,6 @@ const GLShips = [{
     baseId: 'CAPITALPROFUNDITY',
     lookupUnit: 'ADMIRALRADDUS'
 }];
-
-// https://wiki.swgoh.help/wiki/Omicron_List#Territory_War
-const TWOmicrons = [{
-    baseId: 'BOBAFETTSCION',
-    shortName: 'OLD BOBA',
-    twOmicrons: [
-        { ability: "specialskill_BOBAFETTSCION01", key: 'S' },
-        { ability: "leaderskill_BOBAFETTSCION", key: 'L' },
-        { ability: "uniqueskill_BOBAFETTSCION01", key: 'U' },
-    ]
-}, {
-    baseId: 'PHASMA',
-    shortName: 'PHA',
-    twOmicrons: [
-        { ability: "leaderskill_PHASMA", key: 'L' },
-    ]
-}, {
-    baseId: 'CHIEFNEBIT',
-    shortName: 'NEB',
-    twOmicrons: [
-        { ability: "leaderskill_CHIEFNEBIT", key: 'L' },
-    ]
-}, {
-    baseId: 'DARTHSIDIOUS',
-    shortName: 'SID',
-    twOmicrons: [
-        { ability: "uniqueskill_DARTHSIDIOUS01", key: 'U' },
-    ]
-}, {
-    baseId: 'EIGHTHBROTHER',
-    shortName: '8th',
-    twOmicrons: [
-        { ability: "leaderskill_EIGHTHBROTHER", key: 'L' },
-    ]
-}, {
-    baseId: 'EMBO',
-    shortName: 'EMB',
-    twOmicrons: [
-        { ability: "uniqueskill_EMBO01", key: 'U' },
-    ]
-}, {
-    baseId: 'FIFTHBROTHER',
-    shortName: '5th',
-    twOmicrons: [
-        { ability: "leaderskill_FIFTHBROTHER", key: 'L' },
-    ]
-}, {
-    baseId: 'GRANDINQUISITOR',
-    shortName: 'Grd Inq',
-    twOmicrons: [
-        { ability: "specialskill_GRANDINQUISITOR02", key: 'S' },
-        { ability: "leaderskill_GRANDINQUISITOR", key: 'L' },
-        { ability: "uniqueskill_GRANDINQUISITOR01", key: 'U' },
-    ]
-}, {
-    baseId: 'HERASYNDULLAS3',
-    shortName: 'HERA',
-    twOmicrons: [
-        { ability: "leaderskill_HERASYNDULLAS3", key: 'L' },
-    ]
-}, {
-    baseId: 'JYNERSO',
-    shortName: 'JYN',
-    twOmicrons: [
-        { ability: "uniqueskill_JYNERSO01", key: 'U' },
-    ]
-}, {
-    baseId: 'LUKESKYWALKER',
-    shortName: 'FARM',
-    twOmicrons: [
-        { ability: "uniqueskill_LUKESKYWALKER01", key: 'U' },
-    ]
-}, {
-    baseId: 'MACEWINDU',
-    shortName: 'MACE',
-    twOmicrons: [
-        { ability: "uniqueskill_MACEWINDU02", key: 'U' },
-    ]
-}, {
-    baseId: 'MARAJADE',
-    shortName: 'MJ',
-    twOmicrons: [
-        { ability: "uniqueskill_MARAJADE01", key: 'U' },
-    ]
-}, {
-    baseId: 'NINTHSISTER',
-    shortName: '9th',
-    twOmicrons: [
-        { ability: "leaderskill_NINTHSISTER", key: 'L' },
-    ]
-}, {
-    baseId: 'SECONDSISTER',
-    shortName: '2nd',
-    twOmicrons: [
-        { ability: "leaderskill_SECONDSISTER", key: 'L' },
-    ]
-}, {
-    baseId: 'SEVENTHSISTER',
-    shortName: '7th',
-    twOmicrons: [
-        { ability: "leaderskill_SEVENTHSISTER", key: 'L' },
-    ]
-}, {
-    baseId: 'UNDERCOVERLANDO',
-    shortName: 'SKIF',
-    twOmicrons: [
-        { ability: "uniqueskill_UNDERCOVERLANDO01", key: 'U' },
-    ]
-}, {
-    baseId: 'T3_M4',
-    shortName: 'T3M4',
-    twOmicrons: [
-        { ability: "uniqueskill_t3_m4_02", key: 'U' },
-    ]
-}];
-
-
-function getTWOmicronCount(player: ParsedPlayer): number {
-    return TWOmicrons.reduce((count, { baseId, twOmicrons }) => {
-        const unit = player.units.find(({ base_id }) => baseId === base_id);
-        if (!unit) return count;
-        const possibleAbilities = twOmicrons.map(({ ability }) => ability);
-        return count + unit.omicron_abilities.filter((ability) => possibleAbilities.includes(ability)).length;
-    }, 0);
-}
 
 type ModSecondaryStat = 'Speed';
 
@@ -216,7 +92,7 @@ const PlayerDetails = async ({ allyCode }: { allyCode: string }) => {
     const ownedGLs = player.units.filter((unit) => unit.is_galactic_legend);
     return (
         <div key={player.ally_code} className="player-details">
-            <label>Ally Code</label><a className="profile-link" href={`https://swgoh.gg/p/196111371/`} target="_blank">{formatAllyCode(player.ally_code)}<NewTab /></a>
+            <label>Ally Code</label><a className="profile-link" href={`https://swgoh.gg${player.url}`} target="_blank">{formatAllyCode(player.ally_code)}<NewTab /></a>
             <label>Skill Rating</label>{player.skill_rating}
             <label>GLS</label>
             <div className="gl-grid">
@@ -258,30 +134,6 @@ const PlayerDetails = async ({ allyCode }: { allyCode: string }) => {
                     </tbody>
                 </table>
             </div>
-            {/* <label>TW Omicrons</label>
-            <div className="omi-grid">
-                <table>
-                    <thead>
-                        <tr>
-                            {TWOmicrons.map((unit) => (
-                                <th key={unit.baseId} colSpan={unit.twOmicrons.length}>{unit.shortName}</th>
-                            ))}
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            {TWOmicrons.map((omicronUnit) => {
-                                const hasThisUnit = player.units.find((unit) => unit.base_id === omicronUnit.baseId);
-                                const omicrons = omicronUnit.twOmicrons.map(({ ability, key }) => hasThisUnit?.omicron_abilities.includes(ability) ? key : '');
-
-                                return omicrons.map((abilityKey, i) => (
-                                    <td key={`${omicronUnit.baseId}-${i}`}>{abilityKey}</td>
-                                ));
-                            })}
-                        </tr>
-                    </tbody>
-                </table>
-            </div> */}
             <label>TW Omicrons</label>{getTWOmicronCount(player)}
             <label>Speed Mods</label>
             <div className="mods">

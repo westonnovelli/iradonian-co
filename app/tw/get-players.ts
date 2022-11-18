@@ -92,7 +92,7 @@ export const fetchPlayerByAllyCode = async (allyCode: string): Promise<ParsedPla
             const json = await response.json() ?? {};
             return parsePlayer(json);
         } catch (e) {
-            console.error(e);
+            console.error({allyCode, e});
         }
     }
     return Promise.resolve(parsePlayer(Player_short));

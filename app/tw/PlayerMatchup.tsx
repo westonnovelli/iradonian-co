@@ -9,12 +9,15 @@ const PlayerMatchup = async ({ guildId }: { guildId: string }) => {
 
     return (
         <WithSortControls guild1={guild1} guild2={guild2} >
-            {guild1.members.concat(guild2.members).map((player) => (
-                <React.Suspense fallback={null} key={player.ally_code}>
-                    {/* @ts-expect-error Server Component */}
-                    <PlayerDetails key={player.ally_code} allyCode={`${player.ally_code}`} />
-                </React.Suspense>
-            ))}
+            {guild1.members.concat(guild2.members).map((player) => {
+                if (!player?.ally_code) return;
+                return (
+                    <React.Suspense fallback={null} key={player.ally_code}>
+                        {/* @ts-expect-error Server Component */}
+                        <PlayerDetails key={player.ally_code} allyCode={`${player.ally_code}`} />
+                    </React.Suspense>
+                );
+            })}
         </WithSortControls>
     );
 };
