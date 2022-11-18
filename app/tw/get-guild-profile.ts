@@ -1,8 +1,8 @@
+import mock from '../../mockapi';
 import type { GuildProfile } from './guild-profile.types';
 import { guildProfile_short } from './mocks_short';
 
 const DEFAULT_GUILD = process.env.GUILD_ID ?? '6kigC5URTk6Sih8sHfs0nQ';
-const mock = true;
 
 async function getGuildProfile(guildId = DEFAULT_GUILD): Promise<GuildProfile> {
     if (!mock) {

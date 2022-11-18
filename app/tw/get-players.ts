@@ -1,7 +1,6 @@
+import mock from "../../mockapi";
 import { Player_short } from "./mocks_short";
 import { Datacron, Mod, Player, Root, SecondaryStat, Unit } from "./player.types";
-
-const mock = true;
 
 const parseUnit = (unit: any): Unit => {
     const data = unit.data ?? {};
