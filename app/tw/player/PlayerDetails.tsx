@@ -169,6 +169,16 @@ const TWOmicrons = [{
     ]
 }];
 
+
+function getTWOmicronCount(player: ParsedPlayer): number {
+    return TWOmicrons.reduce((count, { baseId, twOmicrons }) => {
+        const unit = player.units.find(({ base_id }) => baseId === base_id);
+        if (!unit) return count;
+        const possibleAbilities = twOmicrons.map(({ ability }) => ability);
+        return count + unit.omicron_abilities.filter((ability) => possibleAbilities.includes(ability)).length;
+    }, 0);
+}
+
 type ModSecondaryStat = 'Speed';
 
 function getModCountBySecondaryStat(player: ParsedPlayer, targetStat: ModSecondaryStat, lowerThreshold: number, upperThreshold: number): number {
@@ -183,8 +193,8 @@ function getModCountBySecondaryStat(player: ParsedPlayer, targetStat: ModSeconda
 type ModStatMatch = [keyof Mod, string | number];
 
 function getModCountByFields(player: ParsedPlayer, matchers: ModStatMatch[]) {
-    const match = player.mods.filter((mod) => 
-        matchers.every(([targetField, targetValue]) => 
+    const match = player.mods.filter((mod) =>
+        matchers.every(([targetField, targetValue]) =>
             mod[targetField] === targetValue
         )
     );
@@ -194,7 +204,7 @@ function getModCountByFields(player: ParsedPlayer, matchers: ModStatMatch[]) {
 // type DatacronStatMatch = [keyof Datacron, string | number | boolean];
 
 function getDatacronCountByTier(player: ParsedPlayer, upper: number, lower = 1) {
-    const match = player.datacrons.filter(({ tier }) => 
+    const match = player.datacrons.filter(({ tier }) =>
         tier >= lower && tier < upper
     );
     return match.length;
@@ -272,6 +282,7 @@ const PlayerDetails = async ({ allyCode }: { allyCode: string }) => {
                     </tbody>
                 </table>
             </div> */}
+            <label>TW Omicrons</label>{getTWOmicronCount(player)}
             <label>Speed Mods</label>
             <div className="mods">
                 <div><label>25+</label>{getModCountBySecondaryStat(player, 'Speed', 25_0000, 99_999_999)}</div>
@@ -298,3 +309,4 @@ const PlayerDetails = async ({ allyCode }: { allyCode: string }) => {
 };
 
 export default PlayerDetails;
+
