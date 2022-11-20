@@ -4,7 +4,7 @@ import PlayerDetails from '../player/PlayerDetails';
 import MatchupList from '../comparison/MatchupList';
 
 const PlayerMatchup = async ({ guildId }: { guildId: string }) => {
-    const guild1 = await getGuildProfile();
+    const guild1 = await getGuildProfile(undefined);
     const guild2 = await getGuildProfile(guildId);
 
     return (

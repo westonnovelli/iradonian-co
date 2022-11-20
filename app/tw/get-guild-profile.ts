@@ -26,7 +26,7 @@ async function getLastCommentsGuildId() {
     return getGuildId(lastComment?.body) ?? DEFAULT_GUILD;
 }
 
-async function getGuildProfile(guild: string): Promise<GuildProfile> {
+async function getGuildProfile(guild: string | undefined): Promise<GuildProfile> {
     if (!mock) {
         const guildId = guild ? await getLastCommentsGuildId() : DEFAULT_GUILD;
         const response = await fetch(`https://swgoh.gg/api/guild-profile/${guildId}/`, { next: { revalidate: 60 * 60 * 24 }});
