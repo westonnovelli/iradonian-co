@@ -1,14 +1,14 @@
 import React from 'react';
-import WithSortControls from './comparison/WithSortControls';
-import getGuildProfile from './get-guild-profile';
-import PlayerDetails from './player/PlayerDetails';
+import getGuildProfile from '../get-guild-profile';
+import PlayerDetails from '../player/PlayerDetails';
+import MatchupList from '../comparison/MatchupList';
 
 const PlayerMatchup = async ({ guildId }: { guildId: string }) => {
     const guild1 = await getGuildProfile();
     const guild2 = await getGuildProfile(guildId);
 
     return (
-        <WithSortControls guild1={guild1} guild2={guild2} >
+        <MatchupList guild1={guild1} guild2={guild2}>
             {guild1.members.concat(guild2.members).map((player) => {
                 if (!player?.ally_code) return;
                 return (
@@ -18,7 +18,7 @@ const PlayerMatchup = async ({ guildId }: { guildId: string }) => {
                     </React.Suspense>
                 );
             })}
-        </WithSortControls>
+        </MatchupList>
     );
 };
 

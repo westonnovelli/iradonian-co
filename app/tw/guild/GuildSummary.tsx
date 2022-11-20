@@ -1,6 +1,7 @@
 import React from 'react';
 import getGuildProfile from '../get-guild-profile';
 import GuildAggregate, { Loader } from './GuildAggregate';
+import './GuildSummary.css';
 
 const GuildSummary = async ({ guildId }: { guildId?: string }) => {
     const guild = await getGuildProfile(guildId);

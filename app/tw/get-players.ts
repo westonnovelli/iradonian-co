@@ -86,7 +86,7 @@ const parsePlayer = (player: any): ParsedPlayer => {
 
 export const fetchPlayerByAllyCode = async (allyCode: string): Promise<ParsedPlayer> => {
     if (!mock) {
-        const response = await fetch(`https://swgoh.gg/api/player/${allyCode}`);
+        const response = await fetch(`https://swgoh.gg/api/player/${allyCode}`, { next: { revalidate: 60 * 60 * 24 }});
         try {
             const json = await response.json() ?? {};
             return parsePlayer(json);
