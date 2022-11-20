@@ -18,11 +18,10 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
 
     if (req.headers["x-hub-signature-256"] !== sig) return res.status(401).json({ message: 'Invalid token' });
 
-    console.log(req.body);
     const author = req.body?.comment?.user?.id;
     const issue = req.body?.issue?.id;
 
-    if (author !== process.env.AUTHORIZED_REVALIDATOR || issue !== 1) {
+    if (author !== process.env.AUTHORIZED_REVALIDATOR || issue !== process.env.CURRENT_ISSUE_ID) {
         return res.status(401).json({ message: 'Unauthorized' });
     }
 
