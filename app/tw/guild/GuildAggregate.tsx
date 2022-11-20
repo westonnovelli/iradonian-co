@@ -28,7 +28,7 @@ const GuildAggregate = async ({ guild }: { guild: GuildProfile }) => {
         <>
             <div>
                 <label title={missingAny ? 'Some rosters were not counted, could be more' : ''}>
-                    GL Count{missingAny ? '*' : ''}
+                    GLs{missingAny ? '*' : ''}
                 </label>
                 {' '}{glCount}{' '}
                 <label>(Ults)</label>
