@@ -5,7 +5,9 @@ import PlayerMatchup from './PlayerMatchup';
 import SortControls from '../sort/SortControls';
 
 const Page = ({ params }: { params: { guild: string } }) => {
-    const guildId = params?.guild;
+    const guild = params?.guild;
+
+    if (guild !== 'current') return null;
 
     return (
         <>
@@ -13,13 +15,19 @@ const Page = ({ params }: { params: { guild: string } }) => {
                 {/* @ts-expect-error Server Component */}
                 <GuildSummary />
                 {/* @ts-expect-error Server Component */}
-                <GuildSummary guildId={guildId} />
+                <GuildSummary guildId={guild} />
             </div>
             <SortControls />
             {/* @ts-expect-error Server Component */}
-            <PlayerMatchup guildId={guildId} />
+            <PlayerMatchup guildId={guild} />
         </>
     );
 };
+
+export async function generateStaticParams() {
+    return [
+        { guild: 'current' }
+    ];
+}
 
 export default Page;
