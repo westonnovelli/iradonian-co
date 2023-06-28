@@ -1,0 +1,71 @@
+.tw {
+    width: 100%;
+}
+
+.tw .summary {
+    margin: 16px 8px;
+    width: calc(100% - 24px);
+}
+
+.tw .matchup-dimension {
+    margin-bottom: 16px;
+}
+
+.summary {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+    grid-template-rows: auto;
+}
+
+.summary .guild-profile {
+    place-self: flex-end center;
+    min-width: 50%;
+}
+
+.matchup-dimension {
+    display: flex;
+    place-content: center;
+}
+
+.matchup-dimension select {
+    margin-left: 8px;
+}
+
+.player-matchup {
+    width: calc(100% - 8px);
+}
+
+.player-matchup ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.player-matchup li {
+    display: grid;
+    grid-template-columns: 1fr 80px 1fr;
+    grid-template-rows: auto;
+    gap: 16px;
+    margin: 0 16px 8px 16px;
+}
+
+.player-matchup li .member {
+    width: 100%;
+}
+
+.player-matchup li .matchup {
+    place-self: center;
+}
+
+.invalid {
+    display: flex;
+    width: 100%;
+    height: 100vh;
+    justify-content: center;
+    align-items: center;
+}
+
+.invalid a {
+    color: #dfb447;
+}

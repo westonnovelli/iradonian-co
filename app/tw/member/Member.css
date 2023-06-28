@@ -1,0 +1,171 @@
+.member {
+    display: grid;
+    grid-template-rows: auto;
+    align-items: center;
+    gap: 8px;
+    width: 40%;
+    background: #2e415ac3;
+    border-radius: 2px;
+    box-shadow: 0 1px 1px 0 rgba(0,0,0,0.14), 0 2px 1px -1px rgba(0,0,0,0.12), 0 1px 3px 0 rgba(0,0,0,0.20);
+    padding: 0 4px;
+    box-sizing: border-box;
+    cursor: pointer;
+}
+
+.member.officer .title {
+    color: #dfbd69;
+}
+
+.member.left {
+    grid-template-columns: 36px 1fr 75px;
+}
+
+.member.right {
+    grid-template-columns: 75px 1fr 36px;
+}
+
+.member .picture {
+    position: relative;
+    top: -18px;
+    border-radius: 4px;
+}
+
+.member .picture img {
+    height: 36px;
+    width: 36px;
+    border-radius: 8px;
+}
+
+.member.right .picture {
+    order: 4;
+}
+
+.member .picture .portrait {
+    position: absolute;
+    z-index: 0;
+}
+
+.member .picture .outline {
+    position: absolute;
+    z-index: 1;
+}
+
+.member .id {
+    display: flex;
+    flex-direction: column;
+    padding: 2px;
+    overflow: hidden;
+}
+
+.member.right .id {
+    order: 3;
+}
+
+.member .name {
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+.member .title {
+    color: #a1a5a5;
+    font-size: 12px;
+}
+
+.member .gp {}
+
+.member.right .gp {
+    order: 2;
+}
+
+.member .league {
+    font-family: 'Courier New', Courier, monospace;
+}
+
+.member.left .league, .member.left .gp {
+    text-align: right;
+}
+
+.member.right .league {
+    order: 1;
+}
+
+.member.left.league-Kyber {
+    background: linear-gradient(90deg, 
+        rgba(46,65,90,1) 0%, 
+        rgba(46,65,90,1) 60%, 
+        rgba(46,136,243,1) 100%
+    );
+}
+
+.member.left.league-Aurodium {
+    background: linear-gradient(90deg, 
+        rgba(46,65,90,1) 0%, 
+        rgba(46,65,90,1) 60%, 
+        rgba(212,163,0,1) 100%
+    );
+}
+
+.member.left.league-Bronzium {
+    background: linear-gradient(90deg, 
+        rgba(46,65,90,1) 0%, 
+        rgba(46,65,90,1) 60%, 
+        rgba(90,56,20,1) 100%
+    );
+}
+
+.member.left.league-Chromium {
+    background: linear-gradient(90deg, 
+        rgba(46,65,90,1) 0%, 
+        rgba(46,65,90,1) 60%, 
+        rgba(109,109,110,1) 100%
+    );
+}
+
+.member.left.league-Carbonite {
+    background: linear-gradient(90deg, 
+        rgba(46,65,90,1) 0%, 
+        rgba(46,65,90,1) 60%, 
+        rgba(23,23,23,1) 100%
+    );
+}
+
+.member.right.league-Kyber {
+    background: linear-gradient(90deg, 
+        rgba(46,136,243,1) 0%,
+        rgba(46,65,90,1) 40%, 
+        rgba(46,65,90,1) 100%
+    );
+}
+
+.member.right.league-Aurodium {
+    background: linear-gradient(90deg, 
+        rgba(212,163,0,1) 0%,
+        rgba(46,65,90,1) 40%, 
+        rgba(46,65,90,1) 100%
+    );
+}
+
+.member.right.league-Bronzium {
+    background: linear-gradient(90deg, 
+        rgba(90,56,20,1) 0%,
+        rgba(46,65,90,1) 40%, 
+        rgba(46,65,90,1) 100%
+    );
+}
+
+.member.right.league-Chromium {
+    background: linear-gradient(90deg, 
+        rgba(109,109,110,1) 0%,
+        rgba(46,65,90,1) 40%, 
+        rgba(46,65,90,1) 100%
+    );
+}
+
+.member.right.league-Carbonite {
+    background: linear-gradient(90deg, 
+        rgba(23,23,23,1) 0%,
+        rgba(46,65,90,1) 40%, 
+        rgba(46,65,90,1) 100% 
+    );
+}
