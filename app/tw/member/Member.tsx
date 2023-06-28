@@ -1,12 +1,10 @@
 "use client";
 
-import Image from "next/image";
 import React from "react";
 import readable from "../number";
 import type { Member as MemberType } from "../guild-profile.types";
 import "./Member.css";
 import "./Responsive.css";
-import PlayerDetails from "../player/PlayerDetails";
 
 interface Props {
   member: MemberType;
@@ -30,17 +28,10 @@ const Member: React.FC<Props> = ({ member, rtl = false, children }) => {
         onClick={() => setExpanded((prev) => !prev)}
       >
         <div className="picture">
-          <Image
-            className="portrait"
-            src={member.portrait_image}
-            alt="player-portrait"
-          />
+          {/* eslint-disable @next/next/no-img-element */}
+          <img className="portrait" src={member.portrait_image} />
           {member.league_frame_image && (
-            <Image
-              className="outline"
-              src={member.league_frame_image}
-              alt="player-league"
-            />
+            <img className="outline" src={member.league_frame_image} />
           )}
         </div>
         <div className="id" style={{ textAlign: rtl ? "right" : "left" }}>

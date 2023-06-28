@@ -1,4 +1,3 @@
-import Image from "next/image";
 import React from "react";
 import getGuildProfile from "../get-guild-profile";
 import GuildAggregate, { Loader } from "./GuildAggregate";
@@ -11,9 +10,9 @@ const GuildSummary = async ({ guildId }: { guildId?: string }) => {
     <div className="guild-profile">
       <h1 title={guild.name}>{guild.name}</h1>
       {guild.banner_logo_id && (
-        <Image
+        /* eslint-disable @next/next/no-img-element */
+        <img
           src={`https://swgoh.gg/static/img/assets/tex.${guild.banner_logo_id}.png`}
-          alt="guild-logo"
         />
       )}
       <div>
